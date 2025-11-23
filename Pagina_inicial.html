@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Régua & Machado Barbearia</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #6f42c1;
+      --primary-dark: #5a34a3;
+      --secondary-color: #f8f9fa;
+      --text-dark: #333;
+      --text-light: #6c757d;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--text-dark);
+    }
+    
+    .hero-section {
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+      color: white;
+      padding: 80px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.1)" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,192C672,181,768,139,864,138.7C960,139,1056,181,1152,181.3C1248,181,1344,139,1392,117.3L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+      background-size: cover;
+      background-position: center;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .logo {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+    }
+    
+    .menu-card {
+      border: none;
+      transition: transform 0.3s, box-shadow 0.3s;
+      margin-bottom: 20px;
+      border-left: 4px solid var(--primary-color);
+      height: 100%;
+    }
+    
+    .menu-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(111, 66, 193, 0.2);
+    }
+    
+    .btn-roxo {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+      color: white;
+      transition: all 0.3s;
+    }
+    
+    .btn-roxo:hover {
+      background-color: var(--primary-dark);
+      border-color: var(--primary-dark);
+      transform: scale(1.05);
+    }
+    
+    .service-icon {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 15px;
+    }
+    
+    .section-title {
+      position: relative;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    
+    .section-title::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background-color: var(--primary-color);
+    }
+    
+    .about-section {
+      padding: 80px 0;
+      background-color: var(--secondary-color);
+    }
+    
+    .services-section {
+      padding: 80px 0;
+    }
+    
+    .service-card {
+      text-align: center;
+      padding: 30px 20px;
+      border-radius: 10px;
+      transition: all 0.3s;
+      height: 100%;
+      border: 1px solid #e9ecef;
+    }
+    
+    .service-card:hover {
+      background-color: white;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    
+    .testimonial-card {
+      border-left: 4px solid var(--primary-color);
+      padding: 20px;
+      background-color: white;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      height: 100%;
+    }
+    
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 15px;
+    }
+    
+    .testimonial-author {
+      font-weight: bold;
+      color: var(--primary-color);
+    }
+    
+    footer {
+      background-color: #343a40;
+      color: white;
+      padding: 40px 0 20px;
+    }
+    
+    .footer-links a {
+      color: #adb5bd;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .footer-links a:hover {
+      color: white;
+    }
+    
+    .copyright {
+      background-color: rgba(0,0,0,0.2);
+      padding: 20px 0;
+      margin-top: 30px;
+    }
+    
+    .navbar-custom {
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .navbar-brand {
+      font-weight: bold;
+      color: var(--primary-color) !important;
+    }
+    
+    .nav-link {
+      color: var(--text-dark) !important;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    
+    .nav-link:hover {
+      color: var(--primary-color) !important;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <i class="fas fa-cut me-2"></i>Régua & Machado
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#home">Início</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about">Sobre</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#services">Serviços</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#testimonials">Avaliações</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contato</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="home">
+    <div class="container">
+      <div class="hero-content">
+        <div class="logo">
+          <i class="fas fa-cut"></i>
+        </div>
+        <h1 class="display-4 fw-bold">Régua & Machado Barbearia</h1>
+        <p class="lead mb-4">Estilo e precisão para o homem moderno</p>
+        <a href="#services" class="btn btn-light btn-lg me-3">Nossos Serviços</a>
+        <a href="#contact" class="btn btn-outline-light btn-lg">Agendar Horário</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Menu Principal -->
+  <section class="py-5">
+    <div class="container my-5">
+      <h2 class="section-title">Sistema de Gestão</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card menu-card">
+            <div class="card-body text-center py-4">
+              <div class="service-icon">
+                <i class="fas fa-calendar-alt"></i>
+              </div>
+              <h5 class="card-title">📅 Agenda</h5>
+              <p class="card-text">Agenda dos profissionais em tempo real</p>
+              <a href="Coresatt.php" class="btn btn-roxo">Acessar Agenda</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card menu-card">
+            <div class="card-body text-center py-4">
+              <div class="service-icon">
+                <i class="fas fa-scissors"></i>
+              </div>
+              <h5 class="card-title">✂️ Agendamento</h5>
+              <p class="card-text">Faça novos agendamentos de serviços</p>
+              <a href="Agendamento.html" class="btn btn-roxo">Novo Agendamento</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card menu-card">
+            <div class="card-body text-center py-4">
+              <div class="service-icon">
+                <i class="fas fa-cash-register"></i>
+              </div>
+              <h5 class="card-title">💰 Caixa</h5>
+              <p class="card-text">Controle financeiro e movimentações</p>
+              <a href="Caixa.php" class="btn btn-roxo">Abrir Caixa</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sobre Nós -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <h2 class="section-title text-start">Sobre a Régua & Machado</h2>
+          <p class="lead">Mais do que uma barbearia, somos um espaço dedicado ao homem moderno que valoriza estilo, qualidade e bem-estar.</p>
+          <p>Com profissionais altamente qualificados e anos de experiência no mercado, oferecemos serviços que vão além do corte de cabelo e barba. Criamos experiências únicas que refletem a personalidade de cada cliente.</p>
+          <p>Nossa missão é proporcionar não apenas um visual impecável, mas também momentos de relaxamento e cuidado pessoal em um ambiente aconchegante e exclusivo.</p>
+          <a href="#contact" class="btn btn-roxo btn-lg mt-3">Conheça Nossa Equipe</a>
+        </div>
+        <div class="col-lg-6">
+          <div class="row mt-4 mt-lg-0">
+            <div class="col-6">
+              <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=874&q=80" class="img-fluid rounded mb-3" alt="Interior da barbearia">
+            </div>
+            <div class="col-6">
+              <img src="https://images.unsplash.com/photo-1567894340315-735d7c361db0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=874&q=80" class="img-fluid rounded mt-5" alt="Cliente sendo atendido">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Serviços -->
+  <section class="services-section" id="services">
+    <div class="container">
+      <h2 class="section-title">Nossos Serviços</h2>
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-cut"></i>
+            </div>
+            <h4>Corte de Cabelo</h4>
+            <p>Cortes modernos e clássicos, sempre com as últimas tendências do mercado masculino.</p>
+            <span class="fw-bold text-primary">R$ 35,00</span>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-air-freshener"></i>
+            </div>
+            <h4>Barba</h4>
+            <p>Aparar, modelar ou fazer a barba completa com produtos de alta qualidade.</p>
+            <span class="fw-bold text-primary">R$ 25,00</span>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-spa"></i>
+            </div>
+            <h4>Combo Completo</h4>
+            <p>Corte de cabelo + barba + cuidados com a pele. O pacote completo de beleza masculina.</p>
+            <span class="fw-bold text-primary">R$ 50,00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Avaliações -->
+  <section class="py-5 bg-light" id="testimonials">
+    <div class="container">
+      <h2 class="section-title">O Que Nossos Clientes Dizem</h2>
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <div class="testimonial-card">
+            <p class="testimonial-text">"Melhor barbearia da região! Sempre saio satisfeito com o corte e o atendimento é impecável."</p>
+            <div class="testimonial-author">— Roberto Silva</div>
+            <div class="text-warning">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="testimonial-card">
+            <p class="testimonial-text">"Ambiente aconchegante, profissionais qualificados e sempre com as últimas tendências. Recomendo!"</p>
+            <div class="testimonial-author">— Carlos Mendonça</div>
+            <div class="text-warning">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="testimonial-card">
+            <p class="testimonial-text">"Não troco por nenhuma outra! Atendimento de excelência e sempre saio renovado. Parabéns à equipe!"</p>
+            <div class="testimonial-author">— João Pereira</div>
+            <div class="text-warning">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contato -->
+  <section class="py-5" id="contact">
+    <div class="container">
+      <h2 class="section-title">Entre em Contato</h2>
+      <div class="row">
+        <div class="col-md-8 mx-auto">
+          <div class="card border-0 shadow">
+            <div class="card-body p-4">
+              <form>
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="name" class="form-label">Nome</label>
+                    <input type="text" class="form-control" id="name" required>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="phone" class="form-label">Telefone</label>
+                    <input type="tel" class="form-control" id="phone" required>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">E-mail</label>
+                  <input type="email" class="form-control" id="email" required>
+                </div>
+                <div class="mb-3">
+                  <label for="service" class="form-label">Serviço Desejado</label>
+                  <select class="form-select" id="service">
+                    <option selected>Selecione um serviço</option>
+                    <option value="1">Corte de Cabelo</option>
+                    <option value="2">Barba</option>
+                    <option value="3">Combo Completo</option>
+                    <option value="4">Outro</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="message" class="form-label">Mensagem</label>
+                  <textarea class="form-control" id="message" rows="4"></textarea>
+                </div>
+                <div class="d-grid">
+                  <button type="submit" class="btn btn-roxo btn-lg">Enviar Mensagem</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-4">
+          <h4><i class="fas fa-cut me-2"></i>Régua & Machado</h4>
+          <p>Estilo e precisão para o homem moderno. Mais do que uma barbearia, uma experiência única.</p>
+          <div class="mt-3">
+            <a href="#" class="text-light me-3"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-light me-3"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-light"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+          <h5>Horário de Funcionamento</h5>
+          <ul class="list-unstyled">
+            <li>Segunda a Sexta: 9h - 20h</li>
+            <li>Sábado: 8h - 18h</li>
+            <li>Domingo: 9h - 14h</li>
+          </ul>
+        </div>
+        <div class="col-lg-4 mb-4">
+          <h5>Contato</h5>
+          <ul class="list-unstyled">
+            <li><i class="fas fa-map-marker-alt me-2"></i> Rua das Flores, 123 - Centro</li>
+            <li><i class="fas fa-phone me-2"></i> (11) 3456-7890</li>
+            <li><i class="fas fa-envelope me-2"></i> contato@reguaemachado.com</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Rodapé inferior -->
+    <div class="copyright">
+      <div class="container text-center">
+        <p class="mb-0">Sistema Régua & Machado Barbearia &copy; 2024 - Protótipo Navegável</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Ativar scroll suave para links internos
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+    
+    // Adicionar classe ativa ao item de menu conforme a rolagem
+    window.addEventListener('scroll', function() {
+      let sections = document.querySelectorAll('section');
+      let navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+      
+      let current = '';
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if(scrollY >= (sectionTop - 100)) {
+          current = section.getAttribute('id');
+        }
+      });
+      
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if(link.getAttribute('href').substring(1) === current) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
