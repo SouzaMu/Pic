@@ -1,4 +1,4 @@
-🧔💈 Sistema de Gestão para Barbearia — PIC I
+🧔💈 Sistema de Gestão para Barbearia 
 
 Um sistema web desenvolvido para a barbearia Régua & Machado, com o objetivo de otimizar processos internos como:
 
