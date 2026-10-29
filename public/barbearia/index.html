@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#302b36">
+  <meta name="description" content="Conheça o projeto acadêmico Régua & Machado: demonstração funcional de agenda, clientes e caixa para uma barbearia.">
+  <title>Régua &amp; Machado | Gestão da barbearia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Pular para o conteúdo</a>
+  <aside class="sidebar">
+    <a class="brand" href="./" aria-label="Régua e Machado, início">
+      <svg class="brand-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M15 13 48 51M48 13 15 51" stroke="currentColor" stroke-width="3"/><path d="m38 10 14 3-4 15-10-18Z" fill="currentColor"/><path d="m10 11 7-3 20 24-7 6L10 11Z" stroke="currentColor" stroke-width="2"/><path d="m15 15 5-4m0 10 5-4m0 10 5-4" stroke="currentColor" stroke-width="2"/></svg>
+      <span>RÉGUA <i>&amp;</i> MACHADO<small>GESTÃO DA BARBEARIA</small></span>
+    </a>
+    <div class="nav-caption">SEU DIA, ORGANIZADO</div>
+    <nav aria-label="Menu principal">
+      <button class="nav-item active" data-view="agenda" aria-current="page"><span aria-hidden="true">01</span> Agenda <b aria-hidden="true">↗</b></button>
+      <button class="nav-item" data-view="clients"><span aria-hidden="true">02</span> Clientes <b aria-hidden="true">↗</b></button>
+      <button class="nav-item" data-view="cash"><span aria-hidden="true">03</span> Caixa <b aria-hidden="true">↗</b></button>
+      <button class="nav-item" data-view="catalog"><span aria-hidden="true">04</span> Serviços e equipe <b aria-hidden="true">↗</b></button>
+    </nav>
+    <div class="sidebar-bottom"><span class="academic">PROJETO ACADÊMICO</span><p>Menos papel.<br>Mais tempo para o corte.</p><a href="/#projetos">← Voltar ao portfólio</a><a href="https://github.com/SouzaMu/Pic" target="_blank" rel="noopener noreferrer">Código original no GitHub ↗</a></div>
+  </aside>
+  <div class="workspace">
+    <div class="demo-bar"><span><i aria-hidden="true"></i> DEMONSTRAÇÃO INTERATIVA</span><p>Use nomes fictícios. Os testes não geram reservas ou cobranças reais.</p></div>
+    <main id="main" tabindex="-1">
+      <header class="page-header"><div><p class="eyebrow">RÉGUA &amp; MACHADO / <span id="view-caption">AGENDA</span></p><h1 id="page-title">Cada horário, no seu lugar.</h1><p class="lead" id="page-description">Acompanhe os atendimentos e prepare o próximo corte.</p></div><button class="button primary" id="new-booking">+ Novo agendamento</button></header>
+      <section class="overview" aria-label="Resumo do dia">
+        <div><span>Atendimentos do dia</span><strong id="stat-bookings">—</strong><small id="stat-completed">Aguardando dados</small></div>
+        <div><span>Previsto na agenda</span><strong id="stat-expected">—</strong><small>Exclui cancelamentos e faltas</small></div>
+        <div><span>Saldo do caixa no dia</span><strong id="stat-cash">—</strong><small>Entradas menos saídas</small></div>
+      </section>
+      <div class="toolbar"><div class="date-group"><button class="icon-button" id="prev-day" aria-label="Dia anterior">←</button><label class="date-label" for="selected-day">Data <input type="date" id="selected-day" required></label><button class="icon-button" id="next-day" aria-label="Próximo dia">→</button><button class="button subtle" id="today">Hoje</button></div><button class="refresh" id="refresh">↻ Atualizar dados</button></div>
+      <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+      <div id="content" aria-busy="true"><div class="skeleton" aria-label="Carregando demonstração"><div></div><div></div><div></div></div></div>
+      <footer class="page-footer"><span>RÉGUA &amp; MACHADO <i>·</i> Protótipo acadêmico adaptado para web</span><span>Dados salvos na web · acesso por cookie de 30 dias.</span></footer>
+      <noscript><p class="notice error">Ative o JavaScript para usar a agenda, o cadastro de clientes e o caixa.</p></noscript>
+    </main>
+  </div>
+  <dialog id="booking-dialog" aria-labelledby="booking-heading">
+    <div class="dialog-heading"><div><p class="eyebrow">ORGANIZE O PRÓXIMO ATENDIMENTO</p><h2 id="booking-heading">Novo agendamento</h2></div><button class="close" type="button" data-close aria-label="Fechar">×</button></div>
+    <form id="booking-form">
+      <div class="form-grid"><label>Cliente <select name="clientId" id="booking-client" required></select></label><label>Data do atendimento <input name="day" type="date" required></label></div>
+      <p class="form-help">Cadastre um cliente na aba Clientes antes de agendar. Horários disponíveis para teste: 08h às 20h.</p>
+      <div class="section-title"><h3>Serviços do atendimento</h3><span id="booking-total">R$ 0,00</span></div>
+      <div id="booking-items"></div>
+      <button type="button" class="button outline" id="add-service">+ Adicionar serviço</button>
+      <p class="form-help">Duração e valor seguem o catálogo. Serviços do mesmo cliente devem ter horários diferentes.</p>
+      <p class="form-error" role="alert"></p>
+      <div class="dialog-actions"><button type="button" class="button subtle" data-close>Voltar</button><button class="button primary" type="submit">Salvar agendamento</button></div>
+    </form>
+  </dialog>
+  <dialog id="client-dialog" aria-labelledby="client-heading">
+    <div class="dialog-heading"><div><p class="eyebrow">COMECE PELO CLIENTE</p><h2 id="client-heading">Cadastrar cliente</h2></div><button type="button" class="close" data-close aria-label="Fechar">×</button></div>
+    <form id="client-form"><label>Nome fictício <input name="name" placeholder="Ex.: André Martins (teste)" minlength="1" maxlength="100" autocomplete="off" required></label><p class="form-help">Este é um ambiente de demonstração. Não informe dados pessoais reais.</p><p class="form-error" role="alert"></p><div class="dialog-actions"><button type="button" class="button subtle" data-close>Voltar</button><button type="submit" class="button primary">Cadastrar cliente</button></div></form>
+  </dialog>
+  <dialog id="movement-dialog" aria-labelledby="movement-heading">
+    <div class="dialog-heading"><div><p class="eyebrow">CONTROLE DO DIA</p><h2 id="movement-heading">Novo lançamento</h2></div><button type="button" class="close" data-close aria-label="Fechar">×</button></div>
+    <form id="movement-form"><label>Descrição <input name="title" maxlength="100" placeholder="Ex.: Compra de materiais (teste)" required></label><div class="form-grid"><label>Tipo <select name="kind"><option value="entrada">Entrada</option><option value="saida">Saída</option></select></label><label>Valor (R$) <input name="amount" type="number" step="0.01" min="0.01" max="1000000" required></label><label>Forma de pagamento <select name="method"><option value="pix">Pix</option><option value="dinheiro">Dinheiro</option><option value="debito">Débito</option><option value="credito">Crédito</option></select></label><label>Data <input name="day" type="date" required></label></div><p class="form-error" role="alert"></p><div class="dialog-actions"><button type="button" class="button subtle" data-close>Voltar</button><button type="submit" class="button primary">Registrar lançamento</button></div></form>
+  </dialog>
+  <dialog id="payment-dialog" aria-labelledby="payment-heading">
+    <div class="dialog-heading"><div><p class="eyebrow">RECEBIMENTO NO CAIXA</p><h2 id="payment-heading">Registrar pagamento</h2></div><button type="button" class="close" data-close aria-label="Fechar">×</button></div>
+    <form id="payment-form"><input name="id" type="hidden"><p id="payment-summary" class="payment-summary"></p><label>Forma de pagamento <select name="method"><option value="pix">Pix</option><option value="dinheiro">Dinheiro</option><option value="debito">Débito</option><option value="credito">Crédito</option></select></label><label>Data do recebimento <input type="date" name="day" required></label><p class="form-help">O valor integral entra no caixa e o atendimento fica marcado como pago. Não há cobrança real.</p><p class="form-error" role="alert"></p><div class="dialog-actions"><button type="button" class="button subtle" data-close>Voltar</button><button type="submit" class="button primary">Confirmar recebimento</button></div></form>
+  </dialog>
+</body>
+</html>

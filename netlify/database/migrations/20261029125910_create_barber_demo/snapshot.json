@@ -1,0 +1,592 @@
+{
+  "version": "8",
+  "dialect": "postgres",
+  "id": "2e731f7f-8827-4e32-aa3b-511fb2f591b0",
+  "prevIds": [
+    "00000000-0000-0000-0000-000000000000"
+  ],
+  "ddl": [
+    {
+      "isRlsEnabled": false,
+      "name": "barber_appointments",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "barber_clients",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "barber_demos",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "barber_movements",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "gen_random_uuid()",
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "barber_appointments"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "demo_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "barber_appointments"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "client_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "barber_appointments"
+    },
+    {
+      "type": "date",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "day",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "barber_appointments"
+    },
+    {
+      "type": "jsonb",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "items",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "barber_appointments"
+    },
+    {
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "total",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "barber_appointments"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "'agendado'",
+      "generated": null,
+      "identity": null,
+      "name": "status",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "barber_appointments"
+    },
+    {
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "barber_appointments"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "gen_random_uuid()",
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "barber_clients"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "demo_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "barber_clients"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "name",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "barber_clients"
+    },
+    {
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "barber_clients"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "gen_random_uuid()",
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "barber_demos"
+    },
+    {
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "barber_demos"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "gen_random_uuid()",
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "barber_movements"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "demo_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "barber_movements"
+    },
+    {
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "appointment_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "barber_movements"
+    },
+    {
+      "type": "date",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "day",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "barber_movements"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "title",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "barber_movements"
+    },
+    {
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "amount",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "barber_movements"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "kind",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "barber_movements"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "method",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "barber_movements"
+    },
+    {
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "barber_movements"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        {
+          "value": "demo_id",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        },
+        {
+          "value": "day",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "with": "",
+      "method": "btree",
+      "concurrently": false,
+      "name": "barber_appointments_demo_day_idx",
+      "entityType": "indexes",
+      "schema": "public",
+      "table": "barber_appointments"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        {
+          "value": "demo_id",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "with": "",
+      "method": "btree",
+      "concurrently": false,
+      "name": "barber_clients_demo_idx",
+      "entityType": "indexes",
+      "schema": "public",
+      "table": "barber_clients"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        {
+          "value": "demo_id",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        },
+        {
+          "value": "day",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "with": "",
+      "method": "btree",
+      "concurrently": false,
+      "name": "barber_movements_demo_day_idx",
+      "entityType": "indexes",
+      "schema": "public",
+      "table": "barber_movements"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        {
+          "value": "appointment_id",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        }
+      ],
+      "isUnique": true,
+      "where": null,
+      "with": "",
+      "method": "btree",
+      "concurrently": false,
+      "name": "barber_one_payment_per_appointment",
+      "entityType": "indexes",
+      "schema": "public",
+      "table": "barber_movements"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "demo_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "barber_demos",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "name": "barber_appointments_demo_id_barber_demos_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "barber_appointments"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "client_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "barber_clients",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "barber_appointments_client_id_barber_clients_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "barber_appointments"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "demo_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "barber_demos",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "name": "barber_clients_demo_id_barber_demos_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "barber_clients"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "demo_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "barber_demos",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "name": "barber_movements_demo_id_barber_demos_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "barber_movements"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "appointment_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "barber_appointments",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "name": "barber_movements_appointment_id_barber_appointments_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "barber_movements"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "barber_appointments_pkey",
+      "schema": "public",
+      "table": "barber_appointments",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "barber_clients_pkey",
+      "schema": "public",
+      "table": "barber_clients",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "barber_demos_pkey",
+      "schema": "public",
+      "table": "barber_demos",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "barber_movements_pkey",
+      "schema": "public",
+      "table": "barber_movements",
+      "entityType": "pks"
+    },
+    {
+      "value": "\"total\" > 0",
+      "name": "barber_appointment_total_positive",
+      "entityType": "checks",
+      "schema": "public",
+      "table": "barber_appointments"
+    },
+    {
+      "value": "\"status\" IN ('agendado','confirmado','aguardando','em_atendimento','finalizado','pago','cancelado','faltou')",
+      "name": "barber_appointment_status_valid",
+      "entityType": "checks",
+      "schema": "public",
+      "table": "barber_appointments"
+    },
+    {
+      "value": "\"amount\" > 0",
+      "name": "barber_movement_amount_positive",
+      "entityType": "checks",
+      "schema": "public",
+      "table": "barber_movements"
+    },
+    {
+      "value": "\"kind\" IN ('entrada','saida')",
+      "name": "barber_movement_kind_valid",
+      "entityType": "checks",
+      "schema": "public",
+      "table": "barber_movements"
+    },
+    {
+      "value": "\"method\" IN ('dinheiro','debito','credito','pix')",
+      "name": "barber_movement_method_valid",
+      "entityType": "checks",
+      "schema": "public",
+      "table": "barber_movements"
+    }
+  ],
+  "renames": []
+}
