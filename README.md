@@ -23,3 +23,9 @@ Execute `npm test` para validar as regras de agendamento e caixa, e `npm run typ
 `netlify.toml` publica apenas `public/`, mantendo código do servidor, anexos e arquivos de banco fora da pasta pública. A função atende em `/api/barbearia`.
 
 Esta adaptação está no repositório conectado ao portfólio. O link de `SouzaMu/Pic` aponta para o projeto original; ele não é sincronizado automaticamente com este repositório.
+
+## Bloco de notas
+
+O botão “Testar bloco de notas” na página inicial abre o editor na própria página. É possível criar, editar e excluir até 100 notas, com título de até 100 caracteres e texto de até 10.000 caracteres. Os registros ficam no Netlify Database e são separados por navegador, por meio de um cookie HttpOnly com validade de 30 dias. Não há login nem sincronização entre dispositivos. Limpar os cookies remove o acesso às notas; não exclui os registros do banco. Use apenas textos de teste, sem dados pessoais.
+
+A função atende em `/api/notas`. A migração `create_notebooks` adiciona as tabelas de cadernos e notas sem alterar a migração existente da barbearia.
