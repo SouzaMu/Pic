@@ -66,6 +66,7 @@ footer p{margin:0 0 20px;color:var(--muted)}
 .calculator-label{display:inline-block;margin-bottom:16px;color:var(--accent);font-size:.85rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase}
 .calculator-layout .calculator{width:100%}
 @media(min-width:760px){.calculator-layout{grid-template-columns:1fr 360px;gap:48px}}
+#bloco-de-notas[hidden]{display:none}
 .notes-layout{display:grid;gap:24px;margin-top:28px;background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--accent);border-radius:10px;padding:24px}
 .notes-sidebar ul{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:8px}
 .notes-sidebar li button{width:100%;text-align:left;padding:12px;background:var(--bg);border:1px solid var(--line);border-radius:6px;color:var(--ink);font:inherit;overflow-wrap:anywhere;cursor:pointer}
@@ -95,32 +96,7 @@ footer p{margin:0 0 20px;color:var(--muted)}
   </div>
 </header>
 <main>
-<section id="bloco-de-notas" aria-labelledby="notes-title">
-  <div class="wrap">
-    <span class="calculator-label">Disponível para testar</span>
-    <h2 id="notes-title">Seu bloco de notas</h2>
-    <p class="calculator-help">Anote uma ideia, salve e volte para editar. As notas ficam associadas a este navegador por até 30 dias; limpar os cookies remove seu acesso. Use textos de teste, sem informações pessoais.</p>
-    <div class="notes-layout" id="notebook" aria-busy="true">
-      <aside class="notes-sidebar" aria-label="Notas salvas">
-        <button type="button" class="btn" id="new-note" disabled>Nova nota</button>
-        <p id="notes-empty">Carregando suas notas…</p>
-        <ul id="notes-list"></ul>
-      </aside>
-      <form id="note-form" class="note-editor">
-        <fieldset id="note-fields" disabled>
-          <label for="note-title">Título</label>
-          <input id="note-title" maxlength="100" required placeholder="Uma ideia para hoje">
-          <label for="note-content">Sua nota</label>
-          <textarea id="note-content" maxlength="10000" rows="9" placeholder="Escreva aqui…"></textarea>
-          <div class="btns"><button class="btn" type="submit">Salvar nota</button><button class="btn alt" type="button" id="delete-note" hidden>Excluir nota</button></div>
-        </fieldset>
-        <p id="note-status" role="status" aria-live="polite"></p>
-        <button type="button" class="btn alt" id="notes-retry" hidden>Tentar carregar novamente</button>
-      </form>
-    </div>
-    <noscript>Ative o JavaScript para usar o bloco de notas.</noscript>
-  </div>
-</section>
+
 
 <section id="sobre">
   <div class="wrap about">
@@ -156,7 +132,7 @@ footer p{margin:0 0 20px;color:var(--muted)}
       </article>
       <article class="card feature"><h3>Sistema de gestão para barbearia</h3><p>Projeto interdisciplinar da faculdade para a Régua &amp; Machado Barbearia. Conheça a versão web e teste o cadastro de clientes, o agendamento de serviços e o controle de caixa com dados fictícios.</p><div class="tags"><span>PHP / MySQL (original)</span><span>JavaScript</span><span>Netlify Database</span></div><p style="display:flex;flex-wrap:wrap;gap:20px"><a href="/barbearia/">Ver o site e testar</a><a href="https://github.com/SouzaMu/Pic">Ver no GitHub</a></p></article>
       <article class="card"><h3>Calculadora</h3><p>Calculadora feita em JavaScript puro, com as quatro operações.</p><div class="tags"><span>JavaScript</span></div><a href="#calculadora">Testar calculadora</a></article>
-      <article class="card"><h3>Bloco de notas</h3><p>Crie, edite e salve notas de teste sem sair do site.</p><div class="tags"><span>JavaScript</span></div><a href="#bloco-de-notas">Testar bloco de notas</a></article>
+      <article class="card"><h3>Bloco de notas</h3><p>Crie, edite e salve notas de teste sem sair do site.</p><div class="tags"><span>JavaScript</span></div><a href="#bloco-de-notas" id="open-notebook" aria-controls="bloco-de-notas" aria-expanded="false">Testar bloco de notas</a></article>
       <article class="card"><h3>Cadastro de clientes</h3><p>Sistema para cadastrar e consultar clientes, feito em PHP.</p><div class="tags"><span>PHP</span></div><a href="https://github.com/SouzaMu/Cadastro-de-Clientes">Ver no GitHub</a></article>
     </div>
     <h2 style="margin:48px 0 20px;font-size:1.5rem">Demonstrações para negócios locais</h2>
@@ -170,6 +146,33 @@ footer p{margin:0 0 20px;color:var(--muted)}
   </div>
 </section>
 
+<section id="bloco-de-notas" aria-labelledby="notes-title" hidden>
+  <div class="wrap">
+    <span class="calculator-label">Disponível para testar</span>
+    <button type="button" class="btn alt" id="close-notebook" style="margin-bottom:24px">Voltar aos projetos</button>
+    <h2 id="notes-title" tabindex="-1">Seu bloco de notas</h2>
+    <p class="calculator-help">Anote uma ideia, salve e volte para editar. As notas ficam associadas a este navegador por até 30 dias; limpar os cookies remove seu acesso. Use textos de teste, sem informações pessoais.</p>
+    <div class="notes-layout" id="notebook" aria-busy="true">
+      <aside class="notes-sidebar" aria-label="Notas salvas">
+        <button type="button" class="btn" id="new-note" disabled>Nova nota</button>
+        <p id="notes-empty">Carregando suas notas…</p>
+        <ul id="notes-list"></ul>
+      </aside>
+      <form id="note-form" class="note-editor">
+        <fieldset id="note-fields" disabled>
+          <label for="note-title">Título</label>
+          <input id="note-title" maxlength="100" required placeholder="Uma ideia para hoje">
+          <label for="note-content">Sua nota</label>
+          <textarea id="note-content" maxlength="10000" rows="9" placeholder="Escreva aqui…"></textarea>
+          <div class="btns"><button class="btn" type="submit">Salvar nota</button><button class="btn alt" type="button" id="delete-note" hidden>Excluir nota</button></div>
+        </fieldset>
+        <p id="note-status" role="status" aria-live="polite"></p>
+        <button type="button" class="btn alt" id="notes-retry" hidden>Tentar carregar novamente</button>
+      </form>
+    </div>
+    <noscript>Ative o JavaScript para usar o bloco de notas.</noscript>
+  </div>
+</section>
 <section id="calculadora" aria-labelledby="calculator-title">
   <div class="wrap calculator-layout">
     <div>

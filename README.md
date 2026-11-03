@@ -26,6 +26,6 @@ Esta adaptação está no repositório conectado ao portfólio. O link de `Souza
 
 ## Bloco de notas
 
-O botão “Testar bloco de notas” na página inicial abre o editor na própria página. É possível criar, editar e excluir até 100 notas, com título de até 100 caracteres e texto de até 10.000 caracteres. Os registros ficam no Netlify Database e são separados por navegador, por meio de um cookie HttpOnly com validade de 30 dias. Não há login nem sincronização entre dispositivos. Limpar os cookies remove o acesso às notas; não exclui os registros do banco. Use apenas textos de teste, sem dados pessoais.
+O link “Testar bloco de notas” no cartão da seção de projetos revela o editor na própria página. O editor começa oculto e pode ser recolhido com “Voltar aos projetos”. É possível criar, editar e excluir até 100 notas, com título de até 100 caracteres e texto de até 10.000 caracteres. Os registros ficam no Netlify Database e são separados por navegador, por meio de um cookie HttpOnly com validade de 30 dias. Não há login nem sincronização entre dispositivos. Limpar os cookies remove o acesso às notas; não exclui os registros do banco. Use apenas textos de teste, sem dados pessoais.
 
 A função atende em `/api/notas`. A migração `create_notebooks` adiciona as tabelas de cadernos e notas sem alterar a migração existente da barbearia.

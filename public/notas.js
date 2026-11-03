@@ -60,5 +60,19 @@
     finally { lock(false); }
   });
   window.addEventListener('beforeunload', event => { if (dirty) { event.preventDefault(); event.returnValue = ''; } });
-  load();
+  const section = el('bloco-de-notas'), trigger = el('open-notebook');
+  let initialized = false;
+  trigger.addEventListener('click', event => {
+    event.preventDefault();
+    section.hidden = false;
+    trigger.setAttribute('aria-expanded', 'true');
+    section.scrollIntoView({ block: 'start' });
+    el('notes-title').focus({ preventScroll: true });
+    if (!initialized) { initialized = true; load(); }
+  });
+  el('close-notebook').addEventListener('click', () => {
+    section.hidden = true;
+    trigger.setAttribute('aria-expanded', 'false');
+    trigger.focus();
+  });
 })();
