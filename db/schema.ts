@@ -43,3 +43,15 @@ export const movements = pgTable('barber_movements', {
   check('barber_movement_amount_positive', sql`${t.amount} > 0`),
   check('barber_movement_kind_valid', sql`${t.kind} IN ('entrada','saida')`),
   check('barber_movement_method_valid', sql`${t.method} IN ('dinheiro','debito','credito','pix')`)]);
+
+export const notebooks = pgTable('notebooks', {
+  id: uuid().primaryKey().defaultRandom(),
+});
+
+export const notes = pgTable('notes', {
+  id: uuid().primaryKey().defaultRandom(),
+  notebookId: uuid('notebook_id').notNull().references(() => notebooks.id, { onDelete: 'cascade' }),
+  title: text().notNull(),
+  content: text().notNull(),
+  updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
+}, t => [index('notes_notebook_idx').on(t.notebookId)]);
